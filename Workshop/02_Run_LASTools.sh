@@ -21,9 +21,9 @@ LAS_file_PATH=/ufrc/general_workshop/share/Large_files # Comment out if you down
 
 ############ ############ ############ ############ ############ ############ 
 ############ Clipping cleaned pointcloud to reduce computational time #######
-############ ############ ############ ############ ############ ############ 
+############ ############ ############ ############ ############ ############
 
-echo \n\nRunning lasclip
+printf "\n\nRunning lasclip"
 date 
 
 wine $LASTools_PATH/LAStools-cli/bin/lasclip-cli.exe -i $LAS_file_PATH/20180622_cs_sony_corn_3dpc.las \
@@ -37,7 +37,7 @@ wine $LASTools_PATH/LAStools-cli/bin/lasclip-cli.exe -i $LAS_file_PATH/20180622_
 ############ Sorting clipped pointcloud to reduce computational time #######
 ############ ############ ############ ############ ############ ############ 
 
-echo \n\nRunning lassort
+printf "\n\nRunning lassort"
 date
 
 wine $LASTools_PATH/LAStools-cli/bin/lassort-cli.exe -i Data/CS18-YYCI_06222018_FW.laz \
@@ -47,7 +47,7 @@ wine $LASTools_PATH/LAStools-cli/bin/lassort-cli.exe -i Data/CS18-YYCI_06222018_
 ############ Removing further noise from pointcloud ############ ############
 ############ ############ ############ ############ ############ ############ 
 
-echo \n\nRunning lasnoise
+printf "\n\nRunning lasnoise"
 date 
 
 wine $LASTools_PATH/LAStools-cli/bin/lasnoise-cli.exe -i Processing/CS18-YYCI_06222018_FW_clip_sort.laz \
@@ -62,7 +62,7 @@ wine $LASTools_PATH/LAStools-cli/bin/lasnoise-cli.exe -i Processing/CS18-YYCI_06
 ############ Using ATIN alogrithim to ifdentify ground points ## ############
 ############ ############ ############ ############ ############ ############ 
 
-echo \n\nRunning lasground
+printf "\n\nRunning lasground"
 date 
 
 wine $LASTools_PATH/LAStools-cli/bin/lasground-cli.exe -i Processing/CS18-YYCI_06222018_FW_NREM.laz \
@@ -78,7 +78,7 @@ wine $LASTools_PATH/LAStools-cli/bin/lasground-cli.exe -i Processing/CS18-YYCI_0
 ############ Identifying maximum points to model ground at peaks of rows ####
 ############ ############ ############ ############ ############ ############ 
 
-echo \n\nRunning lasthin
+printf "\n\nRunning lasthin"
 date
 
 wine $LASTools_PATH/LAStools-cli/bin/lasthin-cli.exe -i Processing/GRND_CS18-YYCI_06222018_FW.laz \
@@ -95,7 +95,7 @@ wine $LASTools_PATH/LAStools-cli/bin/lasthin-cli.exe -i Processing/GRND_CS18-YYC
 ############ to above ground height estimates ##### ############ ############ 
 ############ ############ ############ ############ ############ ############ 
 
-echo \n\nRunning lasheight
+printf "\n\nRunning lasheight"
 date
 
 wine $LASTools_PATH/LAStools-cli/bin/lasheight-cli.exe -i Processing/GRND_KP_CS18-YYCI_06222018_FW.laz \
