@@ -15,7 +15,7 @@ library('lidR')
 ############ Load and Visualize Mosaic ############ 
 ############ ############ ############ ############ 
 
-mosaic<-stack("Workshop/Data/20180622_cs_sony_corn_mosaic.tif")
+mosaic<-stack("Data/20180622_cs_sony_corn_mosaic.tif")
 plotRGB(mosaic, r = 1, g = 2, b = 3)
 
 ######### Creating field mask polygon to clip pointcloud. ######### 
@@ -110,7 +110,7 @@ plotRGB(r2, r = 1, g = 2, b = 3)
 
 # ?writeOGR
 writeOGR(field_mask_poly_df,
-         "Workshop/Outputs/Field_Mask.shp",
+         "Outputs/Field_Mask.shp",
          "Population1",
          verbose = TRUE,
          overwrite_layer = T,
@@ -279,7 +279,7 @@ library("UAStools")
 ?plotshpcreate
 
 
-setwd("Workshop/Outputs")
+setwd("Outputs")
 plots.shp<-plotshpcreate(A=A_cords, #Point A c(Easting_0.0,Northing_0.0)
               B=B_cords, #Point B c(Easting_1.0,Northing_1.0)
               infile=read.csv("../Data/CS18-POP1_infile.csv",header=T),
