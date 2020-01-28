@@ -1,0 +1,12 @@
+Model,Value
+Trait,c("103", "2")
+group.by ,10
+Trait name ,MLM.PHT
+Kinship,104:105
+Z Matrix,c(104, 104)
+Covariate,c(103, 2)
+SNP.P3D,TRUE
+Clustering algorithms,average
+Group kinship,Mean
+group.from ,1
+group.to ,1
