@@ -15,7 +15,8 @@ library('lidR')
 ############ Load and Visualize Mosaic ############ 
 ############ ############ ############ ############ 
 
-mosaic<-stack("Data/20180622_cs_sony_corn_mosaic.tif")
+#mosaic<-stack("Data/20180622_cs_sony_corn_mosaic.tif") # Use this line if your download the tif file to Data dir.
+mosaic<-stack("/ufrc/general_workshop/share/Large_files/20180622_cs_sony_corn_mosaic.tif") # Comment out if you get the tif file
 plotRGB(mosaic, r = 1, g = 2, b = 3)
 
 ######### Creating field mask polygon to clip pointcloud. ######### 

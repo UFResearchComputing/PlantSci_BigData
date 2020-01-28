@@ -16,6 +16,8 @@ module load wine
 # We are using the CLI version of LASTools.
 
 LASTools_PATH=ufrc/general_workshop/share
+LAS_file_PATH=/ufrc/general_workshop/share/Large_files # Comment out if you downloaded the .las file
+# LAS_file_PATH=Data # Use this line if you download the .las file and put in the Data directory.
 
 ############ ############ ############ ############ ############ ############ 
 ############ Clipping cleaned pointcloud to reduce computational time #######
@@ -24,7 +26,7 @@ LASTools_PATH=ufrc/general_workshop/share
 echo \n\nRunning lasclip
 date 
 
-wine $LASTools_PATH/LAStools-cli/bin/lasclip-cli.exe -i Data/20180622_cs_sony_corn_3dpc.las \
+wine $LASTools_PATH/LAStools-cli/bin/lasclip-cli.exe -i $LAS_file_PATH/20180622_cs_sony_corn_3dpc.las \
         -merged \
         -poly Outputs/Field_Mask.shp \
         -o  Processing/CS18-YYCI_06222018_FW_clip.laz \

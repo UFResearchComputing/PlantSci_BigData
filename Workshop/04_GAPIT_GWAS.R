@@ -1,5 +1,10 @@
 
-
+library("devtools")
+library("sp")
+library("raster")
+library("rgdal")
+library("lidR")
+library("lme4")
 library(multtest)
 library(gplots)
 library(LDheatmap)
@@ -12,10 +17,18 @@ library("scatterplot3d")
 source("http://zzlab.net/GAPIT/gapit_functions.txt")
 source("http://zzlab.net/GAPIT/emma.txt")
 
+#########################
+##  Load data as it was at the end of 03_Post_LASTools.R
+
+PC_Summary<-read.csv("Outputs/20180622_CS18_POP1_translated_Metrics.csv",header=T)
+Notes<-read.csv("Data/CS18_YYCI_Notes.csv",header=T)
+
+XXX<-merge(Notes,PC_Summary,by="Barcode")
+
+
 
 #########################
 ################ Extract BLUPS for ENTRIES 
-library("lme4")
 
 XXX$Rep<-as.factor(XXX$Rep)
 XXX$Row<-as.factor(XXX$Row)
