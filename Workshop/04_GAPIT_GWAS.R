@@ -152,7 +152,7 @@ myGAPIT <- GAPIT(
 
 
 ###############  MAF = 0.45
-setwd("GAPIT_MAF=0.45")
+setwd("../GAPIT_MAF_0.45")
 
 myGAPIT <- GAPIT(
   Y=myY,
