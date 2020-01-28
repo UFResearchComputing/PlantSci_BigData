@@ -15,7 +15,7 @@ module load wine
 # ufrc/general_workshop/share. You will need to change this for your installation
 # We are using the CLI version of LASTools.
 
-LASTools_PATH=ufrc/general_workshop/share
+LASTools_PATH=/ufrc/general_workshop/share
 LAS_file_PATH=/ufrc/general_workshop/share/Large_files # Comment out if you downloaded the .las file
 # LAS_file_PATH=Data # Use this line if you download the .las file and put in the Data directory.
 
