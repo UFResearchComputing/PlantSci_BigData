@@ -106,3 +106,5 @@ wine $LASTools_PATH/LAStools-cli/bin/lasheight-cli.exe -i Processing/GRND_KP_CS1
           -replace_z \
           -o Processing/HGT_CS18-YYCI_06222018_FW.las \
           -oforce
+
+printf "\n\nFinished running LASTools steps\n"
