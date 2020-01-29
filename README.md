@@ -21,9 +21,11 @@ The workshop is based on and uses data from Anderson et al (2019), which describ
 
 While the data and some of the scripts used in the workshop are from the Anderson et al (2019) paper, and the lead author is one of the workshop leaders, the analyses have been modified from those used in the publication to fit the workshop format and computational resources. They are not the original data analysis pipelines used for the publication. 
 
-Additional details:
+### [Hands-on for the workshop](Hands-on.md)
 
-RStudio code...
+The workshop content and hands-on directions are on the [Hand-on page](Hands-on.md).
+
+
 
 ### Large Files
 
