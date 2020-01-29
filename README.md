@@ -36,4 +36,4 @@ Two of the needed data files are too large to store in github. These files need 
 
 ### Citations
 
-Anderson, S. L., S. C. Murray, L. Malambo, C. Ratcliff, S. Popescu, D. Cope, A. Chang, J. Jung, and J. A. Thomasson. 2019. Prediction of Maize Grain Yield before Maturity Using Improved Temporal Height Estimates of Unmanned Aerial Systems. Plant Phenome J. 2:190004. [https://dl.sciencesocieties.org/publications/tppj/articles/2/1/190004](doi:10.2135/tppj2019.02.0004)
+Anderson, S. L., S. C. Murray, L. Malambo, C. Ratcliff, S. Popescu, D. Cope, A. Chang, J. Jung, and J. A. Thomasson. 2019. Prediction of Maize Grain Yield before Maturity Using Improved Temporal Height Estimates of Unmanned Aerial Systems. Plant Phenome J. 2:190004. [doi:10.2135/tppj2019.02.0004](https://dl.sciencesocieties.org/publications/tppj/articles/2/1/190004)
