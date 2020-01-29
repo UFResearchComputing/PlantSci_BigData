@@ -32,10 +32,12 @@ That only takes a minute or two to run. So we can go back to Rstudio.
 
 The R script 03_Post_LASTools.R takes the output from LASTools and plots some correlations.
 
-Open 03_Post_LASTools.R and click Source.
+Open 03_Post_LASTools.R.
+Before we run it, make sure to set the working directory to `/ufrc/general_workshop/user123/PlantSci_BigData/Workshop` (File panel, Gear More icon > Set As Working Direcotry).
+and click Source.
 
 # Step 7: Genome Wide Association Study (GWAS)
 
 This last script, 04_GAPIT_GWAS.R runs the [GAPIT](https://www.maizegenetics.net/gapit) R library to conduct the GAWS.
 
-Open 04_GAPIT_GWAS.R and click Source.
+Open 04_GAPIT_GWAS.R, set the working directory back to `/ufrc/general_workshop/user123/PlantSci_BigData/Workshop` once more and click Source.
