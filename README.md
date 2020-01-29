@@ -1,6 +1,6 @@
 # PlantSci_BigData
 
-This repository contains the workshop materials used in the 2020 UF Plant Science Symposium on Big Data.
+This repository contains the workshop materials used in the [2020 UF Plant Science Symposium on Big Data](https://www.ufplants.org/2020-plant-science-symposium).
 
 ## Workshop description
 
@@ -14,18 +14,15 @@ Topics will cover ground control points, UAS image collection, image processing,
 
 **Steven Anderson**: Dr. Steve Anderson is a Postdoctoral Researcher in the Environmental Horticulture Department at the University of Florida. His research focuses on novel plant breeding approaches, high-throughput phenotyping, quantitative genetics, and statistical modeling. He currently leads the Industrial Hemp Pilot Project Research at MREC developing best management practices for upcoming hemp cultivation in Florida diverse environment. Dr. Anderson strives to be an innovative, dynamic leader advocating for improved support/funding of advancements in agricultural production and sustainability through implementation of new technologies, multi-disciplinary collaboration, and educational resources.
 
-
 ### Overview
 
 The workshop is based on and uses data from Anderson et al (2019), which describes a method of using Unmanned Aerial Systems (UAS) equiped with lidar and other sensors to measure individual plant height in a field of maize plants. These data can then be correlated with genotypic data for these plants to conduct a genome-wide association study of plant height.
 
-While the data and some of the scripts used in the workshop are from the Anderson et al (2019) paper, and the lead author is one of the workshop leaders, the analyses have been modified from those used in the publication to fit the workshop format and computational resources. They are not the original data analysis pipelines used for the publication. 
+While the data and some of the scripts used in the workshop are from the Anderson et al (2019) paper, and the lead author is one of the workshop leaders, the analyses have been modified from those used in the publication to fit the workshop format and computational resources. They are not the original data analysis pipelines used for the publication.
 
 ### [Hands-on for the workshop](Hands-on.md)
 
 The workshop content and hands-on directions are on the [Hand-on page](Hands-on.md).
-
-
 
 ### Large Files
 
