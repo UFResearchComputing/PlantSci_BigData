@@ -14,6 +14,8 @@ Topics will cover ground control points, UAS image collection, image processing,
 
 **Steven Anderson**: Dr. Steve Anderson is a Postdoctoral Researcher in the Environmental Horticulture Department at the University of Florida. His research focuses on novel plant breeding approaches, high-throughput phenotyping, quantitative genetics, and statistical modeling. He currently leads the Industrial Hemp Pilot Project Research at MREC developing best management practices for upcoming hemp cultivation in Florida diverse environment. Dr. Anderson strives to be an innovative, dynamic leader advocating for improved support/funding of advancements in agricultural production and sustainability through implementation of new technologies, multi-disciplinary collaboration, and educational resources.
 
+Steven developed the code for the workshop and Matt made some minor changes to make it work on HiPerGator.
+
 ### Overview
 
 The workshop is based on and uses data from Anderson et al (2019), which describes a method of using Unmanned Aerial Systems (UAS) equiped with lidar and other sensors to measure individual plant height in a field of maize plants. These data can then be correlated with genotypic data for these plants to conduct a genome-wide association study of plant height.
