@@ -8,10 +8,13 @@ For the workshop, each user will use a temporary account to access HiPerGator re
 For the workshop, we will be using the Open-on-Demand interface to get a terminal window and a Rstudio window as we work through the exercises.
 
 In your web browser, go to https://ood.rc.ufl.edu/ 
-
 **Note:** You need to be on the UF network to reach this site. Please use the eduroam WiFi network or connect with UF VPN.
 
+Hopefully we won't need this...
+
 When you get to the GatorLink login screen, **log in with the temporary account provided to you**. Do not login with your own GatorLink account as you will not have access to the needed resources.
+
+> **Hopefully we don't need this section:** It may be the case OOD becomes overloaded during the workshop, if that happens, [here is another method that will connect you to Rstudio](https://help.rc.ufl.edu/doc/GUI_Programs#RC_GUI-2.0). The commands needed would be  `module load gui/2; gui start -e rstudio -c 1 -m 2 -t 2` and `gui show` to get the connection URL.
 
 ## Step 2: Use shell to clone repository
 
