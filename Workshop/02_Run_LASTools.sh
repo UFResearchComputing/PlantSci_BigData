@@ -2,9 +2,9 @@
 #SBATCH --job-name=lastools        # Job name
 #SBATCH --mail-type=END,FAIL       # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ADD_YOUR_EMAIL # Where to send mail
-#SBATCH --cpus-per-task=2          # Run on 2 CPUs
-#SBATCH --mem=6gb                  # Job memory request
-#SBATCH --time=0:15:00             # Time limit hrs:min:sec
+#SBATCH --cpus-per-task=1          # Run on 2 CPUs
+#SBATCH --mem=1gb                  # Job memory request
+#SBATCH --time=0:05:00             # Time limit hrs:min:sec
 #SBATCH --output=lastools_%j.log   # Standard output and error log
 
 pwd; hostname; date
