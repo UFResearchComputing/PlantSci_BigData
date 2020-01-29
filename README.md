@@ -37,3 +37,6 @@ Two of the needed data files are too large to store in github. These files need 
 ### Citations
 
 Anderson, S. L., S. C. Murray, L. Malambo, C. Ratcliff, S. Popescu, D. Cope, A. Chang, J. Jung, and J. A. Thomasson. 2019. Prediction of Maize Grain Yield before Maturity Using Improved Temporal Height Estimates of Unmanned Aerial Systems. Plant Phenome J. 2:190004. [doi:10.2135/tppj2019.02.0004](https://dl.sciencesocieties.org/publications/tppj/articles/2/1/190004)
+
+Alexander E. Lipka, Feng Tian, Qishan Wang, Jason Peiffer, Meng Li, Peter J. Bradbury, Michael A. Gore, Edward S. Buckler, Zhiwu Zhang, GAPIT: genome association and prediction integrated tool, Bioinformatics, Volume 28, Issue 18, 15 September 2012, Pages 2397–2399, https://doi.org/10.1093/bioinformatics/bts444
+
