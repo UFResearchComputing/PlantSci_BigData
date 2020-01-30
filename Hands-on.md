@@ -75,4 +75,4 @@ Now that the 01_Select_Generate_Shapefile.R script is loaded and the working dir
 
 As part of running this script, you will need to select four points to create a bounding box around the field you want to study. While you will click and Rstudio will show the four points, **for the workshop, we force a bounding box that is the same for all users**. So, the bounding box will not correspond to the points you select, bit is set in the code. There are several lines in the R code that are noted as being set to ensure consistent results for the workshop. If you want to try the code as it would be run with real analyses, comment out those lines.
 
-## [Continue in part 2 of the Hands-on](Hans-on_part2.md)
+## [Continue in part 2 of the Hands-on](Hands-on_part2.md)
