@@ -58,7 +58,7 @@ That will submit your job to the scheduler and wait for it to start up. Wait a m
 
 This will open a new browser window with Rstudio running on the cluster. This allows you to run a graphical, interactive Rstudio session, using the storage and compute resources of HiPerGator.
 
-## Step 4: Run 01_Select_Generate_Shapefile.R
+## Step 4: Load 01_Select_Generate_Shapefile.R
 
 Now that we have Rstudio running, we need to open the first script from the repository we cloned in step 2 above.
 
@@ -71,8 +71,123 @@ The file is in PlantSci_BigData/Workshop/01_Select_Generate_Shapefile.R
 Once the file is open, set this folder (/ufrc/general_workshop/user123/PlantSci_BigData/Workshop) as the working directory for R using the Gear More menu in the Files pane and selecting Set Working Directory.
 ![Sreenshot of setting working directory](images/Rstudio_setwd.png)
 
-Now that the 01_Select_Generate_Shapefile.R script is loaded and the working directory is set to`/ufrc/general_workshop/user123/PlantSci_BigData/Workshop`, we can run the script but clicking on the Source button. ![Screenshot of Rstudio source button](images/Rstudio_source.png)
+Now that the 01_Select_Generate_Shapefile.R script is loaded and the working directory is set to`/ufrc/general_workshop/user123/PlantSci_BigData/Workshop`, we can start stepping through it. **Note** this pipeline is somewhat interactive, and it is best to select lines or click on individual lines and click the Run button to execute those lines. ![Screenshot of Rstudio run button](images/Rstudio_source.png)
 
-As part of running this script, you will need to select four points to create a bounding box around the field you want to study. While you will click and Rstudio will show the four points, **for the workshop, we force a bounding box that is the same for all users**. So, the bounding box will not correspond to the points you select, bit is set in the code. There are several lines in the R code that are noted as being set to ensure consistent results for the workshop. If you want to try the code as it would be run with real analyses, comment out those lines.
+## Step 5: Running lines of the script
+
+### 5a: Load the libraries
+
+Select the `library()` lines and click Run to load all the libraries. If you get errors about missing libraries, run `install.packages('')` with the name of the missing library in the quotes.
+
+
+### 5b: Load the image of the field
+
+Lines 17-20:
+```R
+#mosaic<-stack("Data/20180622_cs_sony_corn_mosaic.tif") # Use this line if your download the tif file to Data dir.
+mosaic<-stack("/ufrc/general_workshop/share/Large_files/20180622_cs_sony_corn_mosaic.tif") # Comment out if you get the tif file
+plotRGB(mosaic, r = 1, g = 2, b = 3)
+```
+![Screenshot of the field image in the Plots window of Rstudio](images/Rstudio_field_image.png)
+
+These lines load the image of the corn field and display it. The image file is not part of the github repo because it is too large. You should download the image and place it in the Data folder of your clone of the repository.
+
+Run these lines and the image should display in the Plots window.
+
+### 5c: Select the bounding box for the field of interest
+
+Lines 22-29
+```R
+######### Creating field mask polygon to clip pointcloud. ######### 
+field_mask<-data.frame()
+for (i in 1:4){
+  x<-locator(type = "p",n=1,col="red",pch=19)
+  field_mask<-rbind(field_mask,x)
+}
+
+field_mask<-rbind(field_mask,field_mask[1,])
+```
+
+When you run these lines, you click in the image to select 4 points to outline the one field of interest. The drone flight and image include data from several plots (fields), and we need to narrow that down to just the one we want to measure. 
+
+Line 37 of the script replaces the points you have selected with a consistent field mask fo the purposes of the tutorial.
+
+### 5d: Draw box and zoom
+
+Lines 56-63:
+```R
+lines(field_mask, col= "red", type="l", lty=2, lwd=3)
+
+field_mask_poly <- Polygons(list(Polygon(field_mask)), "x")
+field_mask_poly_df <- SpatialPolygonsDataFrame( SpatialPolygons(list(field_mask_poly)), data.frame( z=1, row.names=c("x") ) )
+projection(field_mask_poly_df) <- projection(mosaic)
+
+r <- crop(x = mosaic, y = field_mask_poly_df)
+plotRGB(r, r = 1, g = 2, b = 3)
+```
+These lines draw a red box around the points you have selected (or in our case, the points coded on line 37) and then clip the image and zoom to that field.
+
+After running these lines, you should have a zoomed in image of the field.
+
+Lines 70-76 repeat the process of selecing the field, but now zoomed in so you can more accurately select the field. Line 85 agian replaces your user selection with a consistent set of coordinates for the tutorial.
+
+Lines 99-106 draw another box, and re-cop the image.
+
+Lines 113-118
+```R
+writeOGR(field_mask_poly_df,
+         "Outputs/Field_Mask.shp",
+         "Population1",
+         verbose = TRUE,
+         overwrite_layer = T,
+         driver="ESRI Shapefile")
+```
+Here we save the zoomed in portion of the field as a shapefile.
+
+
+## Step 6: Setup the AB line
+
+Within each field, there is a line defined by 2 points that serve to orient the direction of the field off of N-S. The next lines of code (Lines 126-230) have the user click to select four points and then zooms in for the user to select the A and then B points to define that line. Again, after each selection, the tutorial hard-codes the consistent points.
+
+Lines 240-248 show the line on the field and the following lines zoom into the A and then B points, showing these points close up. ![Screenshot of Rstudio showing the AB line](images/Rstudio_AB_line.png)
+
+## Step 7: Create the plot level polygon shapefiles
+
+Now that we have the field masked and the AB-line to orient the polygons for the individual plots within the field, we can use [Steven Anderson's UAStools library](https://github.com/andersst91/UAStools) to draw the individual plot polygons.
+
+Lines 276-292:
+```R
+library("devtools")
+devtools::install_github("andersst91/UAStools")
+library("UAStools")
+
+?plotshpcreate
+
+
+setwd("Outputs")
+plots.shp<-plotshpcreate(A=A_cords, #Point A c(Easting_0.0,Northing_0.0)
+              B=B_cords, #Point B c(Easting_1.0,Northing_1.0)
+              infile=read.csv("../Data/CS18-POP1_infile.csv",header=T),
+              outfile="Population1_plotpolygons",
+              nrowplot=1,
+              field="CS18-POP1",
+              rowspc = 2.5, rowbuf = 0.1,
+              rangespc = 12.5, rangebuf = 2,unit = "feet",
+              UTMzone = "14", Hemisphere = "N")
+```
+
+In addition to the image of the field, and the AB-line coordinates, this tool takes a CSV file with the information about which genotype is planted where. Here are the first few lines of the CS18-POP1_infile.csv file in the Data Directory:
+
+STOCK | PEDIGREE | Range | Row | LOC | TEST | Plot | Barcode | FtLong | FtAlley | FtWide | Border
+----|----|----|---|---|---|----|---|----|----|---|---|
+CS15-YUAN-444-B4 | (Tx740/NC356)-18-024-1-B-B4 | 7 | 79 | CS18 | YC1I | 1 | CS18-YC1I-001 | 12.5 | 4.2 | 2.5 | 0
+CS15-YUAN-454-B3 | (Tx740/NC356)-18-107-2-1-B3 | 7 | 80 | CS18 | YC1I | 2 | CS18-YC1I-002 | 12.5 | 4.2 | 2.5 | 0
+CS16-YUAV-517-B10 | (Tx740/NC356)-18-129-1-1-B2-B10 | 7 | 81 | CS18 | YC1I | 3 | CS18-YC1I-003 | 12.5 | 4.2 | 2.5 | 0
+
+Using all of this information, the UASTools `plotshpcreate` function makes shapefiles for each plot. These are shown in the PDF output file Outputs/CS18-POP1_Population1_plotpolygons_Rotated_plots.pdf and shown here: 
+
+![Screenshot of plotpolygons_rotated file](images/Plot_shapefile.png)
+
+At this point, we are ready to move on to the analysis in LASTools.
 
 ## [Continue in part 2 of the Hands-on](Hands-on_part2.md)
